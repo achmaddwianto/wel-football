@@ -1,0 +1,19 @@
+/* .toggle-sidebar {
+  cursor: pointer;
+  color: #222;
+} */
+.logo {
+  @media (min-width: 1200px) {
+    .logo {
+      width: 230px;
+    }
+  }
+}
+
+.d-lg-block {
+  @media (min-width: 992px) {
+    .d-lg-block {
+      display: block !important;
+    }
+  }
+}

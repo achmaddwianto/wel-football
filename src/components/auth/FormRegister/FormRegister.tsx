@@ -23,7 +23,7 @@ const FormRegister = () => {
           htmlFor="name"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
-          Name
+          Nama
         </label>
         <input
           type="text"
@@ -96,10 +96,10 @@ const FormRegister = () => {
       </div>
       <RegisterButton />
       <p className="text-sm font-light text-gray-500">
-        Already have an account?
+        Sudah punya akun?
         <Link href="/login">
           <span className="font-medium pl-1 text-blue-600 hover:text-blue-700">
-            Sign In
+            Masuk
           </span>
         </Link>
       </p>

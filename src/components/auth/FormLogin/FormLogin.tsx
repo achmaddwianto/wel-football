@@ -28,7 +28,7 @@ const FormLogin = () => {
         <input
           type="email"
           name="email"
-          placeholder="example@gmail.com"
+          placeholder="Masukkan email"
           className="bg-gray-50 border border-gray-300 text-gray-900 rounded w-full p-2.5"
         />
         <div aria-live="polite" aria-atomic="true">
@@ -47,7 +47,7 @@ const FormLogin = () => {
         <input
           type="password"
           name="password"
-          placeholder="********"
+          placeholder="Masukkan password"
           className="bg-gray-50 border border-gray-300 text-gray-900 rounded w-full p-2.5"
         />
         <div aria-live="polite" aria-atomic="true">
@@ -60,10 +60,10 @@ const FormLogin = () => {
       <LoginButton />
 
       <p className="text-sm font-light text-gray-500">
-        Don&apos;t have an account yet?
+        Belum punya akun?
         <Link href="/register">
           <span className="font-medium pl-1 text-blue-600 hover:text-blue-700">
-            Sign Up here
+            Daftar di sini
           </span>
         </Link>
       </p>

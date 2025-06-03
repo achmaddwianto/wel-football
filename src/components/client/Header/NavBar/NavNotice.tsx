@@ -1,24 +1,18 @@
-import React from "react";
+"use client";
+
+import { MdNotificationsNone } from "react-icons/md";
 import "./NavBar.css";
 
 const NavNotice = () => {
   return (
-    <li>
+    <li className="relative">
       <button
         type="button"
-        className="nav-icon relative rounded bg-white p-1 text-gray-800 hover:bg-gray-200 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+        className="flex items-center justify-center w-10 h-10 text-sm hover:bg-gray-200 rounded-full transition-all cursor-pointer"
       >
         <span className="absolute -inset-1.5" />
         <span className="sr-only ">View notifications</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#1f1f1f"
-        >
-          <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z" />
-        </svg>
+        <MdNotificationsNone size={25} />
 
         {/* <span className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/100 ring-inset absolute top-[-10px] right-[-10px] hei">
             5

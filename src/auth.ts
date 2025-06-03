@@ -42,7 +42,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name,
-          // tambahkan properti lain jika diperlukan (tanpa password!)
+          role: user.role,
         };
       },
     }),
@@ -51,16 +51,46 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const ProtectedRoutes = ["/home", "/user", "/product"];
+      const isAdmin = auth?.user?.role === "admin";
 
-      if (!isLoggedIn && ProtectedRoutes.includes(nextUrl.pathname)) {
+      const protectedRoutes = ["/dashboard", "/user", "/product"];
+
+      // Admin-only routes
+      const adminRoutes = ["admin"];
+
+      // Check if the routes that require login
+      const isAdminRoute = adminRoutes.some((route) =>
+        nextUrl.pathname.startsWith(route)
+      );
+
+      // Redirect to login if not logged in and trying to access protected route
+      if (
+        !isLoggedIn &&
+        protectedRoutes.some((route: string) =>
+          nextUrl.pathname.startsWith(route)
+        )
+      ) {
+        return Response.redirect(new URL("/login", nextUrl));
+      }
+
+      if (!isLoggedIn && !isAdmin && isAdminRoute) {
         return Response.redirect(new URL("/login", nextUrl));
       }
 
       if (isLoggedIn && nextUrl.pathname.startsWith("/login")) {
-        return Response.redirect(new URL("/home", nextUrl));
+        return Response.redirect(new URL("/dashboard", nextUrl));
       }
       return true;
+    },
+    jwt({ token, user }) {
+      if (user) token.role = user.role;
+      return token;
+    },
+
+    session({ session, token }) {
+      session.user.id = token.sub;
+      session.user.role = token.role;
+      return session;
     },
   },
 });

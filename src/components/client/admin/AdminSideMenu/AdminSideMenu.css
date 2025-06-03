@@ -1,0 +1,37 @@
+.sidemenu {
+  width: 280px;
+  height: calc(100vh - 60px);
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(144, 144, 144, 0.2);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  transition: all 0.3s;
+  z-index: 40;
+}
+
+@media (max-width: 768px) {
+  .sidemenu {
+    left: -280px;
+  }
+
+  body.toggle-sidemenu .sidemenu {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  body.toggle-sidemenu .sidemenu {
+    left: -280px;
+  }
+
+  body.toggle-sidemenu .main,
+  body.toggle-sidemenu #footer {
+    margin-left: 0;
+  }
+}

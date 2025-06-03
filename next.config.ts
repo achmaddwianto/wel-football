@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactStrictMode: true,
-  serverExternalPackages: ["@prisma/client", "bcrypt"],
+  serverExternalPackages: ["@prisma/client", "bcrypt-ts"],
 };
 
 export default nextConfig;

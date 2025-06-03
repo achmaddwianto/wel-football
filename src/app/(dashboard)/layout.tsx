@@ -1,15 +1,22 @@
-import Header from "@/components/client/Header";
-import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
+import SideMenuServer from "@/components/server/SideMenu/SideMenuWrapper";
+import { redirect } from "next/navigation";
 
-const HomeLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+export default async function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("./login");
+  }
+
   return (
-    <SessionProvider>
-      <main className="font-work-sans">
-        <Header />
-        {children}
-      </main>
-    </SessionProvider>
+    <div className="flex">
+      <SideMenuServer />
+      {children}
+    </div>
   );
-};
-
-export default HomeLayout;
+}

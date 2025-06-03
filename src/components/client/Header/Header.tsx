@@ -1,14 +1,17 @@
 "use client";
 
-import * as React from "react";
-import Logo from "../../Logo";
-// import SearchBar from "../SearchBar";
-// import "@/styles/global.css";
 import "./Header.css";
 import NavBar from "./NavBar";
 import { useIsScrolled } from "@/hooks/useIsScrolled";
+import Logo from "./Logo";
+import type { User } from "next-auth";
 
-const Header = () => {
+interface HeaderProps {
+  user: User | undefined;
+  isLoggedIn: boolean;
+}
+
+const Header = ({ user, isLoggedIn }: HeaderProps) => {
   const isScrolled = useIsScrolled();
 
   return (
@@ -19,8 +22,7 @@ const Header = () => {
       }`}
     >
       <Logo />
-      {/* <SearchBar /> */}
-      <NavBar session={undefined} />
+      <NavBar user={user} isLoggedIn={isLoggedIn} />
     </header>
   );
 };
